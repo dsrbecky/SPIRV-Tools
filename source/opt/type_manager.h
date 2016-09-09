@@ -62,6 +62,10 @@ class TypeManager {
   // Returns the number of forward pointer types hold in this manager.
   size_t NumForwardPointers() const { return forward_pointers_.size(); }
 
+  Type* GetRecordIfTypeDefinition(const spvtools::ir::Instruction& inst) {
+    return RecordIfTypeDefinition(inst);
+  }
+
  private:
   using TypeToIdMap = std::unordered_map<const Type*, uint32_t>;
   using ForwardPointerVector = std::vector<std::unique_ptr<ForwardPointer>>;
