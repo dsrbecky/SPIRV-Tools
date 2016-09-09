@@ -65,6 +65,10 @@ class TypeManager {
   // Returns the number of forward pointer types hold in this manager.
   size_t NumForwardPointers() const { return forward_pointers_.size(); }
 
+  Type* GetRecordIfTypeDefinition(const spvtools::ir::Instruction& inst) {
+    return RecordIfTypeDefinition(inst);
+  }
+
  private:
   // Analyzes the types and decorations on types in the given |module|.
   void AnalyzeTypes(const spvtools::ir::Module& module);

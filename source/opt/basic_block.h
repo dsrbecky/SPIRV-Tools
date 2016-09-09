@@ -56,6 +56,10 @@ class BasicBlock {
   void SetParent(Function* function) { function_ = function; }
   // Appends an instruction to this basic block.
   inline void AddInstruction(std::unique_ptr<Instruction> i);
+  // Prepends vector of Instructions to this basic block
+  void PrependInstructions(std::vector<std::unique_ptr<Instruction>>& insts) {
+    insts_.insert(insts_.begin(), std::make_move_iterator(insts.begin()), std::make_move_iterator(insts.end()));
+  }
 
   iterator begin() { return iterator(&insts_, insts_.begin()); }
   iterator end() { return iterator(&insts_, insts_.end()); }
