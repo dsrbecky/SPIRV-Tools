@@ -179,8 +179,8 @@ std::string SampledImage::str() const {
   return oss.str();
 }
 
-Array::Array(Type* type, uint32_t length_id)
-    : element_type_(type), length_id_(length_id) {
+Array::Array(Type* type, uint32_t len_id)
+    : element_type_(type), length_id_(len_id) {
   assert(!type->AsVoid());
 }
 

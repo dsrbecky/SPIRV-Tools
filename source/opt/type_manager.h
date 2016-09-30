@@ -66,6 +66,9 @@ class TypeManager {
     return RecordIfTypeDefinition(inst);
   }
 
+  // Returns the map from types to their ids.
+  const TypeToIdMap& type_to_ids() const { return type_to_id_; }
+
  private:
   using TypeToIdMap = std::unordered_map<const Type*, uint32_t>;
   using ForwardPointerVector = std::vector<std::unique_ptr<ForwardPointer>>;
