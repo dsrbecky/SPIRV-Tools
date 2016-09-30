@@ -137,6 +137,7 @@ class Integer : public Type {
   Integer* AsInteger() override { return this; }
   const Integer* AsInteger() const override { return this; }
   uint32_t width() const { return width_; }
+  bool isSigned() const { return signed_; }
 
  private:
   uint32_t width_;  // bit width
@@ -236,12 +237,13 @@ class SampledImage : public Type {
 
 class Array : public Type {
  public:
-  Array(Type* element_type, uint32_t length_id);
+  Array(Type* element_type, uint32_t len_id);
   Array(const Array&) = default;
 
   bool IsSame(Type* that) const override;
   std::string str() const override;
   const Type* element_type() const { return element_type_; }
+  uint32_t length_id() const { return length_id_; }
 
   Array* AsArray() override { return this; }
   const Array* AsArray() const override { return this; }
@@ -276,6 +278,7 @@ class Struct : public Type {
 
   bool IsSame(Type* that) const override;
   std::string str() const override;
+  const std::vector<Type*> element_types() const { return element_types_; }
   bool decoration_empty() const override {
     return decorations_.empty() && element_decorations_.empty();
   }

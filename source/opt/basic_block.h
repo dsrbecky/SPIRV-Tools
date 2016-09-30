@@ -61,6 +61,12 @@ class BasicBlock {
     insts_.insert(insts_.begin(), std::make_move_iterator(insts.begin()), std::make_move_iterator(insts.end()));
   }
 
+  void SetInstructions(std::vector<std::unique_ptr<Instruction>>&& insts) {
+    insts_ = std::move(insts);
+  }
+
+  uint32_t GetLabelId() { return label_->result_id(); }
+
   iterator begin() { return iterator(&insts_, insts_.begin()); }
   iterator end() { return iterator(&insts_, insts_.end()); }
   const_iterator cbegin() { return const_iterator(&insts_, insts_.cbegin()); }

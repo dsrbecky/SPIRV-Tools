@@ -69,6 +69,9 @@ class TypeManager {
     return RecordIfTypeDefinition(inst);
   }
 
+  // Returns the map from types to their ids.
+  const TypeToIdMap& type_to_ids() const { return type_to_id_; }
+
  private:
   // Analyzes the types and decorations on types in the given |module|.
   void AnalyzeTypes(const spvtools::ir::Module& module);

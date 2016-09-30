@@ -51,6 +51,8 @@ class Function {
   // |def_inst|.
   inline explicit Function(std::unique_ptr<Instruction> def_inst);
 
+  uint32_t GetNameId() { return def_inst_->result_id(); }
+
   // Sets the enclosing module for this function.
   void SetParent(Module* module) { module_ = module; }
   // Appends a parameter to this function.
