@@ -75,6 +75,9 @@ class DefUseManager {
   // instrcution(s) which refer to the given id as an operand. The OpDecorate
   // instructions which decorate the decoration group will not be returned.
   std::vector<ir::Instruction*> GetAnnotations(uint32_t id) const;
+  // Returns a vector of pointers to variable-declaration instructions in this
+  // module.
+  std::vector<ir::Instruction*> GetVariables() const;
 
   // Returns the map from ids to their def instructions.
   const IdToDefMap& id_to_defs() const { return id_to_def_; }

@@ -44,6 +44,9 @@ inline bool IsConstantInst(SpvOp opcode) {
 inline bool IsTerminatorInst(SpvOp opcode) {
   return opcode >= SpvOpBranch && opcode <= SpvOpUnreachable;
 }
+inline bool IsVariableInst(SpvOp opcode) {
+	return opcode == SpvOpVariable;
+}
 
 }  // namespace ir
 }  // namespace spvtools
