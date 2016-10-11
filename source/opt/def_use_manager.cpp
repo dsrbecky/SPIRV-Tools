@@ -105,6 +105,16 @@ std::vector<ir::Instruction*> DefUseManager::GetAnnotations(
   return annos;
 }
 
+std::vector<ir::Instruction*> DefUseManager::GetVariables() const {
+  std::vector<ir::Instruction*> insts;
+  for(auto iter = id_to_def_.begin(); iter != id_to_def_.end(); iter++) {
+    if (ir::IsVariableInst(iter->second->opcode())) {
+      insts.push_back(iter->second);
+    }
+  }
+  return insts;
+};
+
 bool DefUseManager::KillDef(uint32_t id) {
   auto iter = id_to_def_.find(id);
   if (iter == id_to_def_.end()) return false;
